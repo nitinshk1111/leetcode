@@ -1,0 +1,57 @@
+Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.
+
+Example 1:
+
+Input: 121
+Output: true
+Example 2:
+
+Input: -121
+Output: false
+Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
+Example 3:
+
+Input: 10
+Output: false
+Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
+
+
+=================================================================================
+Solution
+=================================================================================
+
+var isPalindrome = function(x) {
+  approach 1
+    // if(x < 0) return false;
+    // var length = String(Math.abs(x)).length;
+    // var mid = Math.floor(String(Math.abs(x)).length / 2);
+    // console.log(mid)
+    // var left, right;
+    // if(length === 1) return true;
+    // if(length % 2 === 0) {
+    //     left = mid -1;
+    //     right = mid;
+    // } else {
+    //     left = mid -1;
+    //     right = mid +1;
+    // }
+    // x = x + '';
+    // while(x[left] === x[right] && left >= 0 ) {
+    //     left--; 
+    //     right++;
+    // }
+    // return left === -1 ;
+    
+    
+   // approach 2
+    if(x < 0) return false;
+    if(x < 10) return true;
+    x = x + '';
+    for(let i=0, j= x.length -1; i < j ; i++, j--) {
+        if(x[i]!== x[j]){
+            return false;
+        }
+    }
+    return true;
+    
+ };
