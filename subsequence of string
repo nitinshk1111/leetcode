@@ -1,0 +1,14 @@
+
+function findSubSequence(i, substring,str) {
+    if(i >= str.length) {
+        console.log(substring)
+        return substring;
+    }
+    
+     findSubSequence(i+1, substring,str);
+     substring = substring + str[i];
+     findSubSequence(i+1, substring,str);
+    
+}
+
+findSubSequence(0,'','abc');
