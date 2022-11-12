@@ -1,0 +1,23 @@
+function findSubSequenceToSum(arr,target,i,res,sum) {
+    if(i >= arr.length){
+        if(sum === target) {
+           
+            console.log(res)
+            return 1;
+        }
+            
+        return 0;
+    }
+    res.push(arr[i]);
+     sum = sum + arr[i];
+     let count1 = findSubSequenceToSum(arr,target,i+1,res,sum);
+    
+    res.pop();
+    sum = sum - arr[i];
+    let count2= findSubSequenceToSum(arr,target,i+1,res, sum);
+    return count1+count2;
+   
+    
+}
+
+findSubSequenceToSum([1,2,2,3,5], 5, 0, [],0)
