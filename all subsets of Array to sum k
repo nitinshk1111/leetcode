@@ -1,0 +1,28 @@
+function getSubSequenceToSum(arr, target) {
+	let result = [];
+
+	function findSubSequenceToSum(arr, target, i, subset, currentSum) {
+
+		if (i >= arr.length) {
+			if (currentSum === target) {
+				result.push([...subset])
+				return;
+			}
+
+			return;
+		}
+		subset.push(arr[i]);
+		currentSum = currentSum + arr[i];
+		findSubSequenceToSum(arr, target, i + 1, subset, currentSum);
+
+		subset.pop();
+		currentSum = currentSum - arr[i];
+		findSubSequenceToSum(arr, target, i + 1, subset, currentSum);
+	}
+
+	findSubSequenceToSum(arr, target, 0, [], 0)
+	return result;
+}
+
+
+console.log(getSubSequenceToSum([1, 2, 3, 3, 2], 5))
