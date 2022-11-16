@@ -1,1 +1,30 @@
+var permuteString = function(str) {
+    let result =[];
+    PermuteWithSwap(str,0, result)
+    return result;
+};
 
+function PermuteWithSwap(str,pointerIndex, result) {
+    if(pointerIndex === str.length) {
+        result.push({str});
+        return;
+    }
+
+    for (let index = pointerIndex; index < str.length; index++) {
+        str = swap(index,pointerIndex,str)
+        PermuteWithSwap(str,pointerIndex+1, result);
+        str=swap(index,pointerIndex,str);
+    }
+    
+}
+
+function swap(i,j,str) {
+    let str1 = str.split('');
+    let temp=str1[i];
+    str1[i]= str1[j];
+    str1[j]=temp;
+    return str1.join('') 
+}
+
+
+permute("abcd",0);
