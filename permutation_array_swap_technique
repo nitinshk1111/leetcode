@@ -1,0 +1,27 @@
+var permute = function(nums) {
+    let result =[];
+    PermuteWithSwap(nums,0, result)
+    return result;
+};
+
+function PermuteWithSwap(array,pointerIndex, result) {
+    if(pointerIndex === array.length) {
+        result.push([...array]);
+        return;
+    }
+
+    for (let index = pointerIndex; index < array.length; index++) {
+        swap(index,pointerIndex,array)
+        
+        PermuteWithSwap(array,pointerIndex+1, result);
+        swap(index,pointerIndex,array);
+    }
+    
+}
+
+function swap(i,j,arr) {
+    temp=arr[i];
+    arr[i] = arr[j];
+    arr[j]=temp;
+}
+permute([1,2,3,4]);
